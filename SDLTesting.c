@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
-void clear(SDL_Renderer *renderer) {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-}
-
-void draw(SDL_Renderer *renderer, SDL_Rect *rect) {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	SDL_RenderFillRect(renderer, rect);
-	SDL_RenderPresent(renderer);
-}
-
 int main() {
 	// Init SDL2
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
