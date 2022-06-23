@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include "vector.h"
+
+int run = 1;
 
 int main() {
 	// Init SDL2
@@ -26,18 +29,23 @@ int main() {
 		return 1;
 	}
 
-	SDL_Surface *surface = SDL_GetWindowSurface(window);
-
 	// centered rect
 	SDL_Rect rectangle = {
-		.x = 0,
+		.x = 480,
 		.y = 900,
 		.w = 100,
 		.h = 100
 	};
+	
+	IntVector2 vec = {
+		.x = 1,
+		.y = 3
+	};
+	printf("Total: %d", IntVector2Total(vec));
 
-	while (1) {
-		rectangle.x += 1;
+	while (run) {
+		if (rectangle.y <= 1600)
+			rectangle.y += 1;
 		
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
 
@@ -47,8 +55,9 @@ int main() {
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 		SDL_RenderClear(renderer);
 	}
-
-	SDL_Delay(5000);
+	
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+	
+	return 0;
 }
